@@ -8,4 +8,5 @@ gem 'rake'
 group :test do
   gem 'rspec'
   gem 'cucumber'
+  gem 'webmock'
 end
