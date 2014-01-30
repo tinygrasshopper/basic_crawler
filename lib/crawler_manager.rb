@@ -15,7 +15,7 @@ class CrawlerManager
   private
 
   def queue
-    @queue ||= LinkQueue.new
+    @queue ||= LinkQueue.new(depth_limit, link_limit)
   end
 
   def input_counter
@@ -24,5 +24,13 @@ class CrawlerManager
 
   def crawler
     @crawler ||= Crawler.new(queue)
+  end
+
+  def depth_limit
+    3
+  end
+
+  def link_limit
+    50
   end
 end

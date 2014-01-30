@@ -12,4 +12,14 @@ describe Link do
     end
   end
 
+  context :depth do
+    it 'have depth 1 if no parent' do
+      expect(Link.new('/', nil).depth).to eq(1)
+    end
+
+    it 'have depth parent depth +1 if it has a parent' do
+      expect(Link.new('/', double(depth: 1)).depth).to eq(2)
+    end
+  end
+
 end

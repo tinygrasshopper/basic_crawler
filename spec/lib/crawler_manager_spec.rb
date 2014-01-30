@@ -20,6 +20,7 @@ describe CrawlerManager do
 
   it 'should return the inputs counter' do
     counter = double(InputCounter)
+    allow_any_instance_of(LinkQueue).to receive(:has_elements?).and_return(false)
     allow(InputCounter).to receive(:new).and_return(counter)
 
     result = subject.crawl!
