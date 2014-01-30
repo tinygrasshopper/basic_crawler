@@ -2,8 +2,8 @@ class CrawlerCLI
   def self.crawl! url
     counter = CrawlerManager.new(url).crawl!
     output = ''
-    counter.pages.each do |page, count|
-      output << "#{page} - #{count} inputs\n"
+    counter.links.each do |page, count|
+      output << "#{page.url} - #{count} inputs\n"
     end
     output
   end
