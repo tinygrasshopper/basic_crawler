@@ -7,5 +7,4 @@ class CrawlerCLI
     end
     output
   end
-
 end
