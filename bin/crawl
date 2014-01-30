@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/basic_crawler'
+
+puts CrawlerCLI.crawl!(ARGV[0])

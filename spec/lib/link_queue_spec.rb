@@ -9,13 +9,13 @@ describe LinkQueue do
     end
 
     it 'should not add a link if link depth is exceeds limit' do
-      link = double(Link, depth: 4)
+      link = double(Link, depth: 4, url: '/')
 
       expect { subject.enqueue(link) }.not_to change { subject.count }
     end
 
     it 'should not add a link if link limit exceeds' do
-      link = double(Link, depth: 1)
+      link = double(Link, depth: 1, url: '/')
 
       subject.enqueue(link)
       subject.enqueue(link)
@@ -23,12 +23,18 @@ describe LinkQueue do
 
       expect { subject.enqueue(link) }.not_to change { subject.count }
     end
+
+    it 'should add an to the queue if the url was added before' do
+      subject.enqueue(Link.new('/google', nil))
+
+      expect { subject.enqueue(Link.new('/google', nil)) }.to_not change { subject.count }
+    end
   end
 
   context :dequeue do
     it 'should dequeue' do
-      link_1 = double(Link, depth: 1)
-      link_2 = double(Link, depth: 2)
+      link_1 = double(Link, depth: 1, url: '/')
+      link_2 = double(Link, depth: 2, url: '/other')
 
       subject.enqueue(link_1)
       subject.enqueue(link_2)
@@ -43,7 +49,7 @@ describe LinkQueue do
       expect(subject.has_elements?).to eq(false)
     end
     it 'should be true otherwise' do
-      subject.enqueue(double(Link, depth: 2))
+      subject.enqueue(double(Link, depth: 2, url: '/'))
 
       expect(subject.has_elements?).to eq(true)
     end

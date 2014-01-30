@@ -3,7 +3,7 @@ class LinkQueue
 
   def initialize(depth_limit, link_limit)
     @queue = Queue.new
-    @enqueue_count = 0
+    @urls = []
     @depth_limit = depth_limit
     @link_limit = link_limit
   end
@@ -13,8 +13,8 @@ class LinkQueue
   end
 
   def enqueue link
-    @enqueue_count = @enqueue_count.next
-    @queue << link unless link.depth > depth_limit or @enqueue_count > link_limit
+    @queue << link unless link.depth > depth_limit or @urls.size >= link_limit or @urls.include?(link.url)
+    @urls << link.url
   end
 
   def count
