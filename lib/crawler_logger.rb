@@ -1,4 +1,4 @@
-class Logger
+class CrawlerLogger
   def self.error msg
     puts msg
   end

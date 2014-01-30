@@ -20,7 +20,7 @@ describe Crawler do
     allow(queue).to receive(:dequeue).and_return(link)
     allow(Page).to receive(:fetch).and_throw('Exception')
 
-    expect(Logger).to receive(:error).with('Failed http://url : uncaught throw "Exception"')
+    expect(CrawlerLogger).to receive(:error).with('Failed http://url : uncaught throw "Exception"')
     subject.crawl!
   end
 

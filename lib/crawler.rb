@@ -16,7 +16,7 @@ class Crawler
         queue.enqueue(Link.new(link, item))
       end
     rescue => e
-      Logger.error "Failed #{item.url} : #{e.to_s}"
+      CrawlerLogger.error "Failed #{item.url} : #{e.to_s}"
     end
   end
 

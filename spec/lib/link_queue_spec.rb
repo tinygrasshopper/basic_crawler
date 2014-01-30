@@ -49,7 +49,7 @@ describe LinkQueue do
       expect(subject.has_elements?).to eq(false)
     end
     it 'should be true otherwise' do
-      subject.enqueue(double(Link, depth: 2, url: '/'))
+      subject.enqueue(double(Link, depth: 2, url: '/' ))
 
       expect(subject.has_elements?).to eq(true)
     end
