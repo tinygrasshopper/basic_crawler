@@ -23,7 +23,7 @@ class CrawlerManager
   end
 
   def crawler
-    @crawler ||= Crawler.new(queue)
+    @crawler ||= Crawler.new(queue, input_counter)
   end
 
   def depth_limit
