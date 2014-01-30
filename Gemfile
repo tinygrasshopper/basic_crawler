@@ -10,4 +10,5 @@ group :test do
   gem 'rspec'
   gem 'cucumber'
   gem 'webmock'
+  gem 'simplecov'
 end
